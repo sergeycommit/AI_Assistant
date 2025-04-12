@@ -1,0 +1,644 @@
+/* popup.css */
+/* Base styling for side panel */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #202124;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ensuring proper tooltip positioning in side panel */
+.tooltip {
+    position: relative;
+}
+
+/* Improving scrollbar for side panel */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4285f4;
+    border-radius: 4px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background-color: #8ab4f8;
+}
+
+.header {
+    background-color: #4285f4;
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-button {
+    background: transparent;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.icon-button:active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.icon-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+#clearChatButton {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+}
+
+#clearChatButton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#clearChatButton:active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background-color: white;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: #dadce0;
+    border-radius: 3px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+    background-color: #bdbdbd;
+}
+
+.welcome-message {
+    background-color: #f1f3f4;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.welcome-message h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #202124;
+}
+
+.welcome-message p {
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+    color: #5f6368;
+}
+
+.suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.suggestion-chip {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+
+.suggestion-chip:hover {
+    background-color: #d2e3fc;
+    transform: translateY(-1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.suggestion-chip:active {
+    transform: translateY(0);
+    background-color: #c6dafc;
+}
+
+.message-group {
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.user-message, .ai-message {
+    padding: 12px 16px;
+    margin-bottom: 2px;
+    border-radius: 18px;
+    max-width: 85%;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.user-message {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    margin-left: auto;
+    margin-right: 0;
+    border-bottom-right-radius: 4px;
+}
+
+.ai-message {
+    background-color: #f1f3f4;
+    color: #202124;
+    margin-left: 0;
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+}
+
+.ai-message.error {
+    background-color: #ffebee;
+    border-left: 3px solid #f44336;
+}
+
+.message-actions {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    display: none;
+}
+
+.user-message:hover .message-actions,
+.ai-message:hover .message-actions {
+    display: flex;
+}
+
+.message-action-button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 4px;
+    color: #5f6368;
+    transition: background-color 0.2s;
+}
+
+.message-action-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: #202124;
+}
+
+.input-container {
+    display: flex;
+    padding: 12px 16px;
+    background-color: white;
+    border-top: 1px solid #dadce0;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.03);
+}
+
+.textarea-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+textarea {
+    width: 100%;
+    height: 44px;
+    max-height: 120px;
+    border: 1px solid #dadce0;
+    border-radius: 22px;
+    padding: 12px 16px;
+    padding-right: 40px;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    border-color: #4285f4;
+    box-shadow: 0 0 0 1px rgba(66, 133, 244, 0.2);
+}
+
+#sendButton {
+    margin-left: 10px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 22px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#sendButton:hover {
+    background-color: #3367d6;
+}
+
+#sendButton:active {
+    transform: scale(0.95);
+}
+
+#sendButton:disabled {
+    background-color: #c5c5c5;
+    cursor: not-allowed;
+}
+
+.send-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.typing-indicator {
+    background-color: #f1f3f4;
+    padding: 12px 16px;
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    max-width: 85%;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.dot-container {
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #9aa0a6;
+    border-radius: 50%;
+    margin: 0 3px;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Code formatting */
+.ai-message pre {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 12px 0;
+    border: 1px solid #e0e0e0;
+    position: relative;
+}
+
+.ai-message code {
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+}
+
+.ai-message pre code {
+    display: block;
+    line-height: 1.5;
+}
+
+.copy-code-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #5f6368;
+    display: none;
+}
+
+.ai-message pre:hover .copy-code-button {
+    display: block;
+}
+
+.copy-code-button:hover {
+    background-color: white;
+    color: #202124;
+}
+
+.ai-message p {
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+}
+
+.ai-message p:last-child {
+    margin-bottom: 0;
+}
+
+/* Lists */
+.ai-message ul, .ai-message ol {
+    margin: 10px 0;
+    padding-left: 25px;
+}
+
+.ai-message li {
+    margin-bottom: 5px;
+}
+
+/* Blockquotes */
+.ai-message blockquote {
+    margin: 10px 0;
+    padding-left: 15px;
+    border-left: 3px solid #dadce0;
+    color: #5f6368;
+}
+
+/* Message timestamp */
+.message-time {
+    font-size: 11px;
+    color: #5f6368;
+    margin-top: 6px;
+    text-align: right;
+}
+
+/* Tooltips */
+.tooltip {
+    position: relative;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: auto;
+    background-color: #616161;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 100;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+/* Fix for clear button tooltip to appear below the button */
+#clearChatButton .tooltip-text {
+    bottom: auto;
+    top: 125%;
+}
+
+/* Toast container */
+#toastContainer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* Input character counter */
+.char-counter {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    font-size: 11px;
+    color: #5f6368;
+    pointer-events: none;
+}
+
+/* Dark mode support */
+body.dark-mode {
+    background-color: #202124;
+    color: #e8eaed;
+}
+
+body.dark-mode .header {
+    background-color: #303134;
+}
+
+body.dark-mode .chat-container {
+    background-color: #202124;
+}
+
+body.dark-mode .welcome-message {
+    background-color: #303134;
+}
+
+body.dark-mode .welcome-message h2,
+body.dark-mode .welcome-message p {
+    color: #e8eaed;
+}
+
+body.dark-mode .suggestion-chip {
+    background-color: #3c4043;
+    color: #8ab4f8;
+    border-color: #5f6368;
+}
+
+body.dark-mode .suggestion-chip:hover {
+    background-color: #454a4e;
+}
+
+body.dark-mode .user-message {
+    background-color: #394457;
+    color: #e8eaed;
+}
+
+body.dark-mode .ai-message {
+    background-color: #303134;
+    color: #e8eaed;
+}
+
+body.dark-mode .ai-message.error {
+    background-color: #4c2f32;
+    border-left-color: #f44336;
+}
+
+body.dark-mode .input-container {
+    background-color: #202124;
+    border-top-color: #3c4043;
+}
+
+body.dark-mode textarea {
+    background-color: #303134;
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
+body.dark-mode textarea:focus {
+    border-color: #8ab4f8;
+    box-shadow: 0 0 0 1px rgba(138, 180, 248, 0.2);
+}
+
+body.dark-mode #sendButton {
+    background-color: #8ab4f8;
+}
+
+body.dark-mode #sendButton:hover {
+    background-color: #7aa0e6;
+}
+
+body.dark-mode #sendButton:disabled {
+    background-color: #5f6368;
+}
+
+body.dark-mode .typing-indicator {
+    background-color: #303134;
+}
+
+body.dark-mode .dot {
+    background-color: #9aa0a6;
+}
+
+body.dark-mode .ai-message pre {
+    background-color: #3c4043;
+    border-color: #5f6368;
+}
+
+body.dark-mode .copy-code-button {
+    background: rgba(60, 64, 67, 0.8);
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
+body.dark-mode .copy-code-button:hover {
+    background-color: #454a4e;
+}
+
+body.dark-mode .message-time,
+body.dark-mode .char-counter {
+    color: #9aa0a6;
+}
+
+body.dark-mode .ai-message blockquote {
+    border-left-color: #5f6368;
+    color: #9aa0a6;
+}
+
+body.dark-mode .message-action-button {
+    background: rgba(60, 64, 67, 0.8);
+    color: #e8eaed;
+}
+
+body.dark-mode .message-action-button:hover {
+    background-color: #454a4e;
+    color: #fff;
+}

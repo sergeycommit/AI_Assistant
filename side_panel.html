@@ -1,0 +1,70 @@
+<!-- side_panel.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AI Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>AI Assistant</h1>
+        <div class="header-actions">
+            <button id="shareButton" class="icon-button tooltip" aria-label="Share extension">
+                <span class="tooltip-text">Share extension</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+            </button>
+            <button id="themeToggleButton" class="icon-button tooltip" aria-label="Toggle dark mode">
+                <span class="tooltip-text">Toggle dark mode</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <button id="clearChatButton" class="tooltip" title="Clear chat">
+                <span class="tooltip-text">Clear conversation</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"></path>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+                Clear
+            </button>
+        </div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="welcome-message">
+            <h2>Welcome to AI Assistant</h2>
+            <p>I'm here to help answer your questions, provide information, assist with tasks, or just chat. What would you like to talk about today?</p>
+            <div class="suggestions">
+                <div class="suggestion-chip">Who are you?</div>
+                <div class="suggestion-chip">Help me with code</div>
+                <div class="suggestion-chip">Write a poem</div>
+                <div class="suggestion-chip">How does AI work?</div>
+            </div>
+        </div>
+    </div>
+    <div class="input-container">
+        <div class="textarea-wrapper">
+            <textarea id="userInput" placeholder="Type your question here..." rows="1" maxlength="2000"></textarea>
+            <div class="char-counter" id="charCounter">0/2000</div>
+        </div>
+        <button id="sendButton" disabled aria-label="Send message">
+            <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
